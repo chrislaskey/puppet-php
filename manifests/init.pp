@@ -12,7 +12,7 @@ class php {
 		ensure => "latest",
 		require => [
 			Apt::Ppa["ppa:ondrej/php5"],
-			File["/data/php/pecl"],
+  	  	  	Exec['apt-get update'],
 		],
 	}
 
@@ -68,63 +68,6 @@ class php {
 		}
 	}
 
-	file { "/data/php":
-		ensure => "directory",
-		owner => "root",
-		group => "root",
-		mode => "0770",
-	}
-
-	file { "/data/php/pear":
-		ensure => "directory",
-		owner => "root",
-		group => "root",
-		mode => "0770",
-		require => [
-			File["/data/php"],
-		],
-	}
-
-	file { "/data/php/pear/build":
-		ensure => "directory",
-		owner => "root",
-		group => "root",
-		mode => "0770",
-		require => [
-			File["/data/php/pear"],
-		],
-	}
-
-	file { "/data/php/pear/cache":
-		ensure => "directory",
-		owner => "root",
-		group => "root",
-		mode => "0770",
-		require => [
-			File["/data/php/pear"],
-		],
-	}
-
-	file { "/data/php/pear/temp":
-		ensure => "directory",
-		owner => "root",
-		group => "root",
-		mode => "0770",
-		require => [
-			File["/data/php/pear"],
-		],
-	}
-
-	file { "/data/php/pecl":
-		ensure => "directory",
-		owner => "root",
-		group => "root",
-		mode => "0770",
-		require => [
-			File["/data/php"],
-		],
-	}
-
 	file { "php.ini":
 		path => "/etc/php5/fpm/php.ini",
 		source => "puppet:///modules/php/php.ini",
@@ -174,19 +117,6 @@ class php {
 		],
 	}
 
-	file { "pear.conf":
-		path => "/etc/pear/pear.conf",
-		source => "puppet:///modules/php/pear.conf",
-		ensure => "present",
-		owner => "root",
-		group => "root",
-		mode => "0644",
-		require => [
-			Package["php"],
-			Package["php-library"],
-		],
-	}
-
 	file { "xhprof.ini":
 		path => "/etc/php5/conf.d/xhprof.ini",
 		source => "puppet:///modules/php/xhprof.ini",
@@ -221,7 +151,6 @@ class php {
 		mode => "0700",
 		require => [
 			Package["php"],
-			File ["pear.conf"],
 		],
 	}
 
@@ -260,7 +189,6 @@ class php {
 		refreshonly => "true",
 		logoutput => "on_failure",
 		require => [
-			File["pear.conf"],
 			File["install-phpunit.sh"],
 		],
 		subscribe => [
@@ -269,4 +197,3 @@ class php {
 	}
 
 }
-

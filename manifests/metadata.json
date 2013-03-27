@@ -1,8 +1,8 @@
 name 'php'
 version '1.0.0'
 author 'Chris Laskey'
-summary 'PHP package management for Ubuntu systems. Installs PHP 5.4 from Apt PPA'
-description 'PHP package management for Ubuntu systems. Installs PHP 5.4 from Apt PPA, XHProf and XDebug, and changes PEAR and PECL install locations.'
+summary 'PHP package management for Ubuntu systems. Installs PHP 5.4, XHProf and XDebug'
+description 'PHP package management for Ubuntu systems. Installs PHP 5.4, XHProf and XDebug'
 license 'MIT License (http://opensource.org/licenses/MIT)'
 project_page 'http://github.com/chrislaskey'
 
