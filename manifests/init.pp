@@ -20,6 +20,7 @@ class php {
 		name => [
 			"php-apc",
 			"php5-curl",
+			"php5-gd",
 			"php5-imagick",
 			"php5-mcrypt",
 			"php5-mysql",
