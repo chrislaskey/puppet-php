@@ -3,6 +3,14 @@ class php {
 	# Packages
 	# ==========================================================================
 
+	$php_package_require = $operatingsystem ? {
+		Ubuntu => [
+			Apt::Ppa["ppa:ondrej/php5"],
+			Exec['apt-get update'],
+		],
+		default => Exec['apt-get update'],
+	}
+
 	package { "php":
 		name => [
 			"php5-cli",
@@ -10,10 +18,7 @@ class php {
 			"php5-dev",
 		],
 		ensure => "latest",
-		require => [
-			Apt::Ppa["ppa:ondrej/php5"],
-  	  	  	Exec['apt-get update'],
-		],
+		require => $php_package_require,
 	}
 
 	package { "php-library":
@@ -160,10 +165,12 @@ class php {
 	# PEAR/PECL command is not POSIX compliant and throws out misleading output.
 	# The exit number is valid, so success/error can still be tracked.
 
-	apt::ppa { "ppa:ondrej/php5":
-		require => [
-			File["/etc/apt/sources.list.d/"]
-		],
+	if $operatingsystem == Ubuntu {
+		apt::ppa { "ppa:ondrej/php5":
+			require => [
+				File["/etc/apt/sources.list.d/"]
+			],
+		}
 	}
 
 	exec { "install-xhprof.sh":
