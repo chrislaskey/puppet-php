@@ -17,7 +17,10 @@ class php {
 			"php5-fpm",
 			"php5-dev",
 		],
-		ensure => "latest",
+		ensure => $operatingsystem ? {
+			Ubuntu => "5.4.17-1~precise+1",
+		  	default => "latest",
+	  	},
 		require => $php_package_require,
 	}
 
