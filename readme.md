@@ -1,15 +1,31 @@
 About
 ================================================================================
 
-A custom puppet module for installing PHP 5.4 on Ubuntu server 12.04 using
-a [custom PPA](https://launchpad.net/~ondrej/+archive/php5) by Ondřej Surý.
+A custom puppet module for installing PHP FPM and CLI on Debian/Ubuntu systems.
 
-Also centralizes PEAR and PECL installation locations instead
-of polluting the dir namespace.
+If Ubuntu, installs the latest PHP version from a
+[custom PPA](https://launchpad.net/~ondrej/+archive/php5) by Ondřej Surý.
 
-In addition to installing and setting up PHP 5.4, it also installs
-[xhrprof](https://github.com/facebook/xhprof) and
-[phpunit](http://phpunit.de/).
+PHP Modules
+-----------
+
+The following PHP modules are installed using apt packages:
+
+	php5-cli
+	php5-fpm
+	php5-dev
+	php-apc
+	php-pear
+	php5-curl
+	php5-gd
+	php5-imagick
+	php5-mcrypt
+	php5-memcached
+	php5-mysql
+	php5-pgsql
+	php5-sqlite
+	php5-xdebug
+	phpunit
 
 Puppet dependencies
 -------------------
