@@ -1,8 +1,8 @@
 name 'php'
-version '1.0.0'
+version '1.0.1'
 author 'Chris Laskey'
-summary 'PHP package management for Ubuntu systems. Installs PHP 5.4, XHProf and XDebug'
-description 'PHP package management for Ubuntu systems. Installs PHP 5.4, XHProf and XDebug'
+summary 'PHP package management for Debian systems. Installs PHP 5.4, XHProf and XDebug'
+description 'PHP package management for Debian systems. Installs PHP 5.4, XHProf and XDebug'
 license 'MIT License (http://opensource.org/licenses/MIT)'
 project_page 'http://github.com/chrislaskey'
 
